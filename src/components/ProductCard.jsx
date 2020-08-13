@@ -1,13 +1,15 @@
 import React from 'react';
+// Styles
+import { Wrapper } from './ProductCard.styles';
 
-const ProductCard = ({ name, tagline, description }) => (
-  <article style={{ border: '1px solid black' }}>
+const ProductCard = ({ name, tagline, description, image }) => (
+  <Wrapper>
     <p>FavouriteIcon</p>
-    <p>ProductImage</p>
+    <img src={image} alt={name} style={{ maxHeight: '60px' }} />
     <h2>{name}</h2>
     <h3>{tagline}</h3>
     <p>{description}</p>
-  </article>
+  </Wrapper>
 );
 
 export default ProductCard;
