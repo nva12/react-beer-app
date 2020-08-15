@@ -9,6 +9,7 @@ const FilterableProductsGrid = () => {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [beers, setBeers] = useState([]);
+  const [userFilter, setUserFilter] = useState('');
 
   useEffect(() => {
     fetch('https://api.punkapi.com/v2/beers?page=1&per_page=9')
@@ -25,15 +26,25 @@ const FilterableProductsGrid = () => {
       );
   }, []);
 
+  const handleChange = (e) => {
+    setUserFilter(e.target.value);
+  };
+
+  const filteredBeers = beers.filter((beer) =>
+    beer.name.toLowerCase().includes(userFilter.toLowerCase())
+  );
+
   return (
     <Wrapper>
-      <SearchBar />
+      <SearchBar handleChange={handleChange} />
       {error ? (
         <div>Oops, something went wrong...</div>
       ) : !isLoaded ? (
         <div>Loading...</div>
+      ) : filteredBeers.length > 0 ? (
+        <ProductsGrid beers={filteredBeers} />
       ) : (
-        <ProductsGrid beers={beers} />
+        <div>No result found.</div>
       )}
     </Wrapper>
   );
