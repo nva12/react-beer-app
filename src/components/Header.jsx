@@ -1,8 +1,10 @@
 import React from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 // Components
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -17,6 +19,13 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
+  },
+  link: {
+    textDecoration: 'none',
+    color: 'inherit',
+    '&:hover': {
+      textDecoration: 'none',
+    },
   },
 }));
 
@@ -33,9 +42,19 @@ const Header = () => {
           </Typography>
           {matches ? (
             <nav>
-              <Button color="inherit">Products</Button>
-              <Button color="inherit">Favorites</Button>
-              <Button color="inherit">About</Button>
+              <Link component={RouterLink} to="/" className={classes.link}>
+                <Button color="inherit">Products</Button>
+              </Link>
+              <Link
+                component={RouterLink}
+                to="/favorites"
+                className={classes.link}
+              >
+                <Button color="inherit">Favorites</Button>
+              </Link>
+              <Link component={RouterLink} to="/about" className={classes.link}>
+                <Button color="inherit">About</Button>
+              </Link>
             </nav>
           ) : (
             <IconButton color="inherit" aria-label="menu">
