@@ -41,7 +41,7 @@ const ProductCard = ({ name, tagline, description, image, abv }) => {
       <CardContent>
         <div className={classes.headRow}>
           <img src={image} alt={name} className={classes.productImage} />
-          <FavoriteIcon />
+          <FavoriteIcon name={name} />
         </div>
         <Typography variant="h5" component="h2" gutterBottom>
           {name}

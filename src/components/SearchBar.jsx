@@ -21,7 +21,7 @@ const SearchBar = ({ handleChange, handleChange2 }) => {
       <CardContent>
         <form>
           <Grid container spacing={3}>
-            <Grid item xs={12} sm={6} md={4}>
+            <Grid item xs={12} sm={6} md={4} lg={3}>
               <TextField
                 label="Name"
                 id="name"
@@ -32,7 +32,7 @@ const SearchBar = ({ handleChange, handleChange2 }) => {
                 InputLabelProps={{ shrink: true }}
               />
             </Grid>
-            <Grid item xs={12} sm={6} md={4}>
+            <Grid item xs={12} sm={6} md={4} lg={3}>
               <TextField
                 label="Max ABV (%)"
                 id="abv_max"

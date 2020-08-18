@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 // Components
 import IconButton from '@material-ui/core/IconButton';
-import { StarBorder, Star } from '@material-ui/icons';
+import Snackbar from '@material-ui/core/Snackbar';
+import { StarBorder, Star, Close } from '@material-ui/icons';
 // Styles
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -13,23 +14,61 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const FavouriteIcon = () => {
+const FavouriteIcon = ({ name }) => {
   const [favorite, setFavorite] = useState(false);
+  const [open, setOpen] = useState(false);
 
-  const handleClick = () => setFavorite((s) => !s);
+  const handleClick = () => {
+    setFavorite((s) => !s);
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
 
   const classes = useStyles();
 
   return (
-    <IconButton
-      color="primary"
-      aria-label="favorite"
-      component="span"
-      onClick={handleClick}
-      className={classes.favoriteIcon}
-    >
-      {favorite ? <Star /> : <StarBorder />}
-    </IconButton>
+    <>
+      <IconButton
+        color="primary"
+        component="span"
+        onClick={handleClick}
+        className={classes.favoriteIcon}
+        aria-label="favorite"
+      >
+        {favorite ? <Star /> : <StarBorder />}
+      </IconButton>
+      <Snackbar
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+        open={open}
+        autoHideDuration={3000}
+        onClose={handleClose}
+        message={`${name} ${
+          favorite ? 'added to' : 'removed from'
+        } your favorites`}
+        action={
+          <React.Fragment>
+            <IconButton
+              size="small"
+              aria-label="close"
+              color="inherit"
+              onClick={handleClose}
+            >
+              <Close fontSize="small" />
+            </IconButton>
+          </React.Fragment>
+        }
+      />
+    </>
   );
 };
 

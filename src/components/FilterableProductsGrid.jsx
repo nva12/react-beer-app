@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 // Components
 import Container from '@material-ui/core/Container';
 import SearchBar from './SearchBar';
+import Typography from '@material-ui/core/Typography';
 import ProductsGrid from './ProductsGrid';
 // Styles
 
@@ -43,7 +44,13 @@ const FilterableProductsGrid = () => {
 
   return (
     <Container fixed>
+      <Typography variant="h4" component="h2" gutterBottom>
+        Search
+      </Typography>
       <SearchBar handleChange={handleChange} handleChange2={handleChange2} />
+      <Typography variant="h4" component="h2" gutterBottom>
+        Products
+      </Typography>
       {error ? (
         <div>Oops, something went wrong...</div>
       ) : !isLoaded ? (
