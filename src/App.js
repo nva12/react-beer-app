@@ -3,12 +3,12 @@ import React from 'react';
 import Header from './components/Header';
 import FilterableProductsGrid from './components/FilterableProductsGrid';
 // Styles
-import { GlobalStyle } from './App.styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 function App() {
   return (
     <>
-      <GlobalStyle />
+      <CssBaseline />
       <div className="App">
         <Header />
         <FilterableProductsGrid />
