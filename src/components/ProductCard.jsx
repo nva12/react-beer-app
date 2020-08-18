@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ProductCard = ({ name, tagline, description, image }) => {
+const ProductCard = ({ name, tagline, description, image, abv }) => {
   const [fullText, setFullText] = useState(false);
 
   const handleClick = () => setFullText((s) => !s);
@@ -45,6 +45,9 @@ const ProductCard = ({ name, tagline, description, image }) => {
         </div>
         <Typography variant="h5" component="h2" gutterBottom>
           {name}
+        </Typography>
+        <Typography variant="caption" gutterBottom>
+          ABV: {abv}%
         </Typography>
         <Typography variant="subtitle2" gutterBottom>
           {tagline}

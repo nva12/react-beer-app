@@ -7,7 +7,7 @@ import ProductCard from './ProductCard';
 const ProductsGrid = ({ beers }) => {
   return (
     <Grid container spacing={3}>
-      {beers.map(({ id, name, tagline, description, image_url }) => (
+      {beers.map(({ id, name, tagline, description, image_url, abv }) => (
         <Grid item xs={12} sm={6} md={4}>
           <ProductCard
             key={id}
@@ -15,6 +15,7 @@ const ProductsGrid = ({ beers }) => {
             tagline={tagline}
             description={description}
             image={image_url}
+            abv={abv}
           />
         </Grid>
       ))}
