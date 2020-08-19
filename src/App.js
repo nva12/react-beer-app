@@ -55,7 +55,11 @@ function App() {
             />
           </Route>
           <Route path="/favorites">
-            <Favorites beers={beers} favorites={favorites} />
+            <Favorites
+              beers={beers}
+              favorites={favorites}
+              handleToggleFavorite={handleToggleFavorite}
+            />
           </Route>
           <Route path="/about">
             <About />

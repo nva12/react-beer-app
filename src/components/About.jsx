@@ -8,13 +8,16 @@ import Typography from '@material-ui/core/Typography';
 const About = () => {
   return (
     <Container fixed>
+      <Typography variant="h4" component="h2" gutterBottom>
+        About
+      </Typography>
       <Card>
         <CardContent>
-          <Typography variant="h4" component="h2" gutterBottom>
-            About
-          </Typography>
           <Typography variant="body1" gutterBottom>
             This Web App is built with React, using React Hooks.
+          </Typography>
+          <Typography variant="body1" gutterBottom>
+            &copy; 2020 Nicolas Vallée
           </Typography>
         </CardContent>
       </Card>
