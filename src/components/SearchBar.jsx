@@ -42,7 +42,7 @@ const SearchBar = ({ handleChange, handleChange2 }) => {
                 type="number"
                 inputProps={{
                   min: 0,
-                  max: 20,
+                  max: 100,
                   step: 0.1,
                 }}
                 onChange={handleChange2}

@@ -4,7 +4,6 @@ import Container from '@material-ui/core/Container';
 import SearchBar from './SearchBar';
 import Typography from '@material-ui/core/Typography';
 import ProductsGrid from './ProductsGrid';
-// Styles
 
 const FilterableProductsGrid = ({
   error,
@@ -13,26 +12,8 @@ const FilterableProductsGrid = ({
   favorites,
   handleToggleFavorite,
 }) => {
-  // const [error, setError] = useState(null);
-  // const [isLoaded, setIsLoaded] = useState(false);
-  // const [beers, setBeers] = useState([]);
   const [userFilter, setUserFilter] = useState('');
   const [maxABVFilter, setMaxABVFilter] = useState('');
-
-  // useEffect(() => {
-  //   fetch('https://api.punkapi.com/v2/beers?page=1&per_page=9')
-  //     .then((res) => res.json())
-  //     .then(
-  //       (result) => {
-  //         setIsLoaded(true);
-  //         setBeers(result);
-  //       },
-  //       (error) => {
-  //         setIsLoaded(true);
-  //         setError(error);
-  //       }
-  //     );
-  // }, []);
 
   const handleChange = (e) => {
     setUserFilter(e.target.value);

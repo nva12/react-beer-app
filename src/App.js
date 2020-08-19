@@ -15,7 +15,7 @@ function App() {
   const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
-    fetch('https://api.punkapi.com/v2/beers?page=1&per_page=9')
+    fetch('https://api.punkapi.com/v2/beers')
       .then((res) => res.json())
       .then(
         (result) => {
