@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 // Components
 import Container from '@material-ui/core/Container';
 import SearchBar from './SearchBar';
@@ -6,27 +6,33 @@ import Typography from '@material-ui/core/Typography';
 import ProductsGrid from './ProductsGrid';
 // Styles
 
-const FilterableProductsGrid = ({ handleToggleFavorite }) => {
-  const [error, setError] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [beers, setBeers] = useState([]);
+const FilterableProductsGrid = ({
+  error,
+  isLoaded,
+  beers,
+  favorites,
+  handleToggleFavorite,
+}) => {
+  // const [error, setError] = useState(null);
+  // const [isLoaded, setIsLoaded] = useState(false);
+  // const [beers, setBeers] = useState([]);
   const [userFilter, setUserFilter] = useState('');
   const [maxABVFilter, setMaxABVFilter] = useState('');
 
-  useEffect(() => {
-    fetch('https://api.punkapi.com/v2/beers?page=1&per_page=9')
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          setIsLoaded(true);
-          setBeers(result);
-        },
-        (error) => {
-          setIsLoaded(true);
-          setError(error);
-        }
-      );
-  }, []);
+  // useEffect(() => {
+  //   fetch('https://api.punkapi.com/v2/beers?page=1&per_page=9')
+  //     .then((res) => res.json())
+  //     .then(
+  //       (result) => {
+  //         setIsLoaded(true);
+  //         setBeers(result);
+  //       },
+  //       (error) => {
+  //         setIsLoaded(true);
+  //         setError(error);
+  //       }
+  //     );
+  // }, []);
 
   const handleChange = (e) => {
     setUserFilter(e.target.value);
@@ -58,6 +64,7 @@ const FilterableProductsGrid = ({ handleToggleFavorite }) => {
       ) : filteredBeers.length > 0 ? (
         <ProductsGrid
           beers={filteredBeers}
+          favorites={favorites}
           handleToggleFavorite={handleToggleFavorite}
         />
       ) : (

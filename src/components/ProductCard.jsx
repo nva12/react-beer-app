@@ -33,6 +33,7 @@ const ProductCard = ({
   description,
   image,
   abv,
+  favorites,
   handleToggleFavorite,
 }) => {
   const [fullText, setFullText] = useState(false);
@@ -52,6 +53,7 @@ const ProductCard = ({
           <FavoriteIcon
             beerId={beerId}
             name={name}
+            favorites={favorites}
             handleToggleFavorite={handleToggleFavorite}
           />
         </div>

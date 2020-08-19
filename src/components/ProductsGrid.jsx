@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ProductsGrid = ({ beers, handleToggleFavorite }) => {
+const ProductsGrid = ({ beers, favorites, handleToggleFavorite }) => {
   const classes = useStyles();
 
   return (
@@ -26,6 +26,7 @@ const ProductsGrid = ({ beers, handleToggleFavorite }) => {
             description={description}
             image={image_url}
             abv={abv}
+            favorites={favorites}
             handleToggleFavorite={handleToggleFavorite}
           />
         </Grid>

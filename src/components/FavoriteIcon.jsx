@@ -14,15 +14,15 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const FavouriteIcon = ({ beerId, name, handleToggleFavorite }) => {
-  const [favorite, setFavorite] = useState(false);
+const FavouriteIcon = ({ beerId, name, favorites, handleToggleFavorite }) => {
   const [open, setOpen] = useState(false);
 
   const handleClick = () => {
-    setFavorite((s) => !s); // to be refactored, ok for now as only place to toggle state
     handleToggleFavorite(beerId);
     setOpen(true);
   };
+
+  const isFavorite = favorites.includes(beerId);
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
@@ -43,7 +43,7 @@ const FavouriteIcon = ({ beerId, name, handleToggleFavorite }) => {
         className={classes.favoriteIcon}
         aria-label="favorite"
       >
-        {favorite ? <Star /> : <StarBorder />}
+        {isFavorite ? <Star /> : <StarBorder />}
       </IconButton>
       <Snackbar
         anchorOrigin={{
@@ -54,7 +54,7 @@ const FavouriteIcon = ({ beerId, name, handleToggleFavorite }) => {
         autoHideDuration={3000}
         onClose={handleClose}
         message={`${name} ${
-          favorite ? 'added to' : 'removed from'
+          isFavorite ? 'added to' : 'removed from'
         } your favorites`}
         action={
           <React.Fragment>

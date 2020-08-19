@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 // Components
 import Header from './components/Header';
@@ -9,7 +9,25 @@ import Favorites from './components/Favorites';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 function App() {
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [beers, setBeers] = useState([]);
   const [favorites, setFavorites] = useState([]);
+
+  useEffect(() => {
+    fetch('https://api.punkapi.com/v2/beers?page=1&per_page=9')
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          setIsLoaded(true);
+          setBeers(result);
+        },
+        (error) => {
+          setIsLoaded(true);
+          setError(error);
+        }
+      );
+  }, []);
 
   const handleToggleFavorite = (id) => {
     if (favorites.includes(id)) {
@@ -29,11 +47,15 @@ function App() {
         <Switch>
           <Route exact path="/">
             <FilterableProductsGrid
+              error={error}
+              isLoaded={isLoaded}
+              beers={beers}
+              favorites={favorites}
               handleToggleFavorite={handleToggleFavorite}
             />
           </Route>
           <Route path="/favorites">
-            <Favorites favorites={favorites} />
+            <Favorites beers={beers} favorites={favorites} />
           </Route>
           <Route path="/about">
             <About />

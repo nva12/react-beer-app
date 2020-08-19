@@ -5,7 +5,9 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 
-const Favorites = ({ favorites }) => {
+const Favorites = ({ beers, favorites }) => {
+  const favBeers = beers.filter((item) => favorites.includes(item.id));
+
   return (
     <Container fixed>
       <Card>
@@ -17,8 +19,8 @@ const Favorites = ({ favorites }) => {
             Your favorite beers are:
           </Typography>
           <ul>
-            {favorites.map((item) => (
-              <li key={item}>id: {item}</li>
+            {favBeers.map((item) => (
+              <li key={item.id}>Name: {item.name}</li>
             ))}
           </ul>
         </CardContent>
