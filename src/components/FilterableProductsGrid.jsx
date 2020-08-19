@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import ProductsGrid from './ProductsGrid';
 // Styles
 
-const FilterableProductsGrid = () => {
+const FilterableProductsGrid = ({ handleToggleFavorite }) => {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [beers, setBeers] = useState([]);
@@ -56,7 +56,10 @@ const FilterableProductsGrid = () => {
       ) : !isLoaded ? (
         <div>Loading...</div>
       ) : filteredBeers.length > 0 ? (
-        <ProductsGrid beers={filteredBeers} />
+        <ProductsGrid
+          beers={filteredBeers}
+          handleToggleFavorite={handleToggleFavorite}
+        />
       ) : (
         <div>No result found.</div>
       )}

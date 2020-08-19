@@ -26,7 +26,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ProductCard = ({ name, tagline, description, image, abv }) => {
+const ProductCard = ({
+  beerId,
+  name,
+  tagline,
+  description,
+  image,
+  abv,
+  handleToggleFavorite,
+}) => {
   const [fullText, setFullText] = useState(false);
 
   const handleClick = () => setFullText((s) => !s);
@@ -41,7 +49,11 @@ const ProductCard = ({ name, tagline, description, image, abv }) => {
       <CardContent>
         <div className={classes.headRow}>
           <img src={image} alt={name} className={classes.productImage} />
-          <FavoriteIcon name={name} />
+          <FavoriteIcon
+            beerId={beerId}
+            name={name}
+            handleToggleFavorite={handleToggleFavorite}
+          />
         </div>
         <Typography variant="h5" component="h2" gutterBottom>
           {name}

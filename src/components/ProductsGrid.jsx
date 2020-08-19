@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ProductsGrid = ({ beers }) => {
+const ProductsGrid = ({ beers, handleToggleFavorite }) => {
   const classes = useStyles();
 
   return (
@@ -20,11 +20,13 @@ const ProductsGrid = ({ beers }) => {
         <Grid item xs={12} sm={6} md={4} lg={3}>
           <ProductCard
             key={id}
+            beerId={id}
             name={name}
             tagline={tagline}
             description={description}
             image={image_url}
             abv={abv}
+            handleToggleFavorite={handleToggleFavorite}
           />
         </Grid>
       ))}

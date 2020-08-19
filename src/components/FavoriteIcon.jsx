@@ -14,12 +14,13 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const FavouriteIcon = ({ name }) => {
+const FavouriteIcon = ({ beerId, name, handleToggleFavorite }) => {
   const [favorite, setFavorite] = useState(false);
   const [open, setOpen] = useState(false);
 
   const handleClick = () => {
-    setFavorite((s) => !s);
+    setFavorite((s) => !s); // to be refactored, ok for now as only place to toggle state
+    handleToggleFavorite(beerId);
     setOpen(true);
   };
 
