@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "React Beer App",
+  "name": "Front-End project with Create-React-App and React Hooks",
   "icons": [
     {
       "src": "favicon.ico",
