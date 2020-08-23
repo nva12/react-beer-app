@@ -4,15 +4,25 @@ import Container from '@material-ui/core/Container';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+// Styles
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+  cardContent: {
+    padding: theme.spacing(4, 2),
+  },
+}));
 
 const About = () => {
+  const classes = useStyles();
+
   return (
     <Container fixed>
       <Typography variant="h4" component="h2" gutterBottom>
-        About
+        About this project
       </Typography>
       <Card>
-        <CardContent>
+        <CardContent className={classes.cardContent}>
           <Typography variant="body1" gutterBottom>
             Hello, my name is Nicolas Vallée, I am a web developer specialized
             in React.

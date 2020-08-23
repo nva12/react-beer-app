@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
     height: '10rem',
   },
   centered: {
+    display: 'block',
     textAlign: 'center',
   },
   clickable: {
@@ -70,7 +71,7 @@ const ProductCard = ({
           <Typography variant="body2" gutterBottom>
             <>
               {description}
-              <div className={classes.centered}>
+              <span className={classes.centered}>
                 <IconButton
                   color="primary"
                   aria-label="minimize text"
@@ -80,7 +81,7 @@ const ProductCard = ({
                 >
                   <KeyboardArrowUp fontSize="small" />
                 </IconButton>
-              </div>
+              </span>
             </>
           </Typography>
         ) : (
@@ -88,7 +89,7 @@ const ProductCard = ({
             {description.length > 120 ? (
               <>
                 {excerpt(description, 120)}
-                <div className={classes.centered}>
+                <span className={classes.centered}>
                   <IconButton
                     color="primary"
                     aria-label="expand text"
@@ -98,7 +99,7 @@ const ProductCard = ({
                   >
                     <KeyboardArrowDown fontSize="small" />
                   </IconButton>
-                </div>
+                </span>
               </>
             ) : (
               description

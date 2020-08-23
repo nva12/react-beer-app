@@ -7,6 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    width: '100%',
     margin: theme.spacing(2, 0),
   },
 }));
@@ -15,11 +16,10 @@ const ProductsGrid = ({ beers, favorites, handleToggleFavorite }) => {
   const classes = useStyles();
 
   return (
-    <Grid container spacing={3} className={classes.root}>
+    <Grid container spacing={2} className={classes.root}>
       {beers.map(({ id, name, tagline, description, image_url, abv }) => (
-        <Grid item xs={12} sm={6} md={4} lg={3}>
+        <Grid item key={id} xs={12} sm={6} md={4} lg={3}>
           <ProductCard
-            key={id}
             beerId={id}
             name={name}
             tagline={tagline}

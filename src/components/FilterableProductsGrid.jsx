@@ -12,20 +12,20 @@ const FilterableProductsGrid = ({
   favorites,
   handleToggleFavorite,
 }) => {
-  const [userFilter, setUserFilter] = useState('');
+  const [nameFilter, setNameFilter] = useState('');
   const [maxABVFilter, setMaxABVFilter] = useState('');
 
-  const handleChange = (e) => {
-    setUserFilter(e.target.value);
+  const handleNameChange = (e) => {
+    setNameFilter(e.target.value);
   };
 
-  const handleChange2 = (e) => {
+  const handleABVChange = (e) => {
     setMaxABVFilter(e.target.value);
   };
 
   const filteredBeers = beers.filter(
     (beer) =>
-      beer.name.toLowerCase().includes(userFilter.toLowerCase()) &&
+      beer.name.toLowerCase().includes(nameFilter.toLowerCase()) &&
       (!maxABVFilter || beer.abv <= maxABVFilter)
   );
 
@@ -34,7 +34,10 @@ const FilterableProductsGrid = ({
       <Typography variant="h4" component="h2" gutterBottom>
         Search
       </Typography>
-      <SearchBar handleChange={handleChange} handleChange2={handleChange2} />
+      <SearchBar
+        handleNameChange={handleNameChange}
+        handleABVChange={handleABVChange}
+      />
       <Typography variant="h4" component="h2" gutterBottom>
         Products
       </Typography>
